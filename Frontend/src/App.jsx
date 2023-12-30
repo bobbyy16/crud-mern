@@ -4,6 +4,8 @@ import CreatePage from './Pages/CreatePage'
 import EditPage from './Pages/EditPage'
 import Navbar from './Components/Navbar'
 import NotFound from './Pages/NotFound'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -16,10 +18,12 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/create' element={<CreatePage />} />
-          <Route path='/edit' element={<EditPage />} />
+          <Route path='/edit/:id' element={<EditPage />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
+
+      <ToastContainer />
     </>
   )
 }

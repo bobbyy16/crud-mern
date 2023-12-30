@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import {toast} from 'react-toastify'
 
 export default function CreatePage() {
   
@@ -7,6 +9,7 @@ export default function CreatePage() {
   const [price, setPrice] = useState('')
   const [image, setImage] = useState('')
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate()
 
   const handleName = (e) => setName(e.target.value)
   const handleQuantity = (e) => setQuantity(e.target.value)
@@ -16,8 +19,8 @@ export default function CreatePage() {
   const saveProduct = async(e) => {
     e.preventDefault()
 
-    if(name === "" || quantity === "" || price === " " || image === ""){
-      alert("Please provide all the below information")
+    if(name === "" || quantity === "" || price === "" || image === ""){
+      toast.error("Please provide all the below information")
       return;
     }
 
@@ -41,9 +44,10 @@ export default function CreatePage() {
       }
     
       console.log('Product saved successfully');
-
+      toast.success(`Saved ${name} sucessfully`);
+      navigate('/')
     } catch (error) {
-      console.error(error)
+      toast.error(error.message);
     } finally{
       setIsLoading(false)
     }
