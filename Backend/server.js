@@ -8,10 +8,10 @@ const cors = require('cors')
 
 const port = process.env.PORT
 const db = process.env.MONGODB_URL
-const frontend = process.env.FRONTEND
+// const frontend = process.env.FRONTEND
 
 var corsOptions = {
-    origin: frontend,
+    origin: '*',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
