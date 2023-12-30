@@ -76,7 +76,9 @@ export default function EditPage() {
       Update a product
     </h2>
 
-    <form onSubmit={updateProduct}>
+    {isLoading ? ("loading...") : (
+      <>
+      <form onSubmit={updateProduct}>
       <div className="space-y-2">
 
         <div>
@@ -128,6 +130,10 @@ export default function EditPage() {
         </div>
       </div>
     </form>
+      </>
+    )}
+
+
   </div>
   );
 }
